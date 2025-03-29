@@ -1,6 +1,6 @@
 # Kafka to API Service
 
-This project is a Go service that reads messages from a Kafka topic and sends them to a specified API endpoint. It is designed to be simple and efficient, leveraging Go's concurrency features to handle message consumption and API requests.
+This project is a Go service that reads messages from a Kafka topic and sends them to a specified API endpoint. It is designed to be simple and efficient, leveraging Go's concurrency features to handle message consumption and API requests. тест
 
 ## Project Structure
 
