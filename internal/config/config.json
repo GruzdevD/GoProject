@@ -1,0 +1,7 @@
+{
+    "brokers": ["localhost:9092"],
+    "group_id": "my-group",
+    "topic": "test-topic",
+    "min_bytes": 10000,
+    "max_bytes": 10000000
+  }
