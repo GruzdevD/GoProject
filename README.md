@@ -1,58 +1,131 @@
 # Kafka to API Service
 
-This project is a Go service that reads messages from a Kafka topic and sends them to a specified API endpoint. It is designed to be simple and efficient, leveraging Go's concurrency features to handle message consumption and API requests. тест
+Этот проект представляет собой Go-сервис, который читает сообщения из Kafka-топика и отправляет их на указанный API-эндпоинт. Он разработан для простоты и эффективности, используя возможности конкурентности Go для обработки сообщений и выполнения API-запросов.
 
-## Project Structure
+---
+
+## Структура проекта
 
 ```
 kafka-to-api-service
 ├── cmd
-│   └── main.go          # Entry point of the application
+│   └── main.go          # Точка входа в приложение
 ├── internal
 │   ├── kafka
-│   │   └── consumer.go  # Kafka consumer implementation
+│   │   └── consumer.go  # Реализация Kafka-консьюмера
 │   ├── api
-│   │   └── client.go    # API client for sending messages
+│   │   └── client.go    # API-клиент для отправки сообщений
 │   └── config
-│       └── config.go    # Configuration loading
+│       └── config.go    # Загрузка конфигурации
 ├── pkg
 │   └── logger
-│       └── logger.go     # Logger implementation
-├── go.mod                # Go module file
-├── go.sum                # Go module checksums
-└── README.md             # Project documentation
+│       └── logger.go     # Реализация логгера
+├── go.mod                # Файл модулей Go
+├── go.sum                # Контрольные суммы модулей Go
+└── README.md             # Документация проекта
 ```
 
-## Installation
+---
 
-To install the necessary dependencies, run:
+## Установка
 
-```
+Для установки необходимых зависимостей выполните:
+
+```bash
 go mod tidy
 ```
 
-## Configuration
+---
 
-The service requires a configuration file to specify the Kafka connection details and the API endpoint. The configuration can be loaded using the `LoadConfig` function defined in `internal/config/config.go`.
+## Конфигурация
 
-## Running the Service
+Приложение требует файл конфигурации для указания параметров подключения к Kafka и API-эндпоинта. Конфигурация загружается с помощью функции `LoadConfig`, определенной в `internal/config/config.go`.
 
-To run the service, execute the following command:
+Пример файла конфигурации (`internal/config/config.json`):
 
+```json
+{
+    "brokers": ["localhost:9092"],
+    "group_id": "my-group",
+    "topic": "test-topic",
+    "min_bytes": 10000,
+    "max_bytes": 10000000,
+    "message_limit": 10,
+    "post_url": "http://localhost:8080/api/messages",
+    "port": 8080
+}
 ```
+
+- **`brokers`**: Список брокеров Kafka.
+- **`group_id`**: Группа консьюмера.
+- **`topic`**: Топик Kafka для вычитки сообщений.
+- **`min_bytes` и `max_bytes`**: Минимальный и максимальный размер данных для чтения.
+- **`message_limit`**: Лимит сообщений для отправки.
+- **`post_url`**: URL для отправки сообщений.
+- **`port`**: Порт для запуска веб-сервера.
+
+---
+
+## Запуск приложения
+
+Для запуска приложения выполните:
+
+```bash
 go run cmd/main.go
 ```
 
-This will start the Kafka consumer, which will begin reading messages from the configured Kafka topic and sending them to the specified API endpoint.
+После запуска приложение будет доступно по адресу: [http://localhost:8080](http://localhost:8080).
 
-## Logging
+---
 
-The service uses a custom logger defined in `pkg/logger/logger.go` to log messages at different levels (Info, Error, Debug). Ensure that logging is properly configured in your application.
+## Использование
 
-## Contributing
+### Веб-интерфейс
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any enhancements or bug fixes.
+Откройте в браузере [http://localhost:8080](http://localhost:8080). Вы увидите страницу с кнопками для управления приложением:
 
-## License
+1. **Start Consumer**: Запускает вычитку сообщений из Kafka.
+2. **Stop Consumer**: Останавливает вычитку сообщений.
+3. **Configuration**: Позволяет редактировать конфигурацию приложения.
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+### API (опционально)
+
+Вы также можете взаимодействовать с приложением через API:
+
+- **Запуск консьюмера**:
+  ```bash
+  curl -X POST http://localhost:8080/start
+  ```
+
+- **Остановка консьюмера**:
+  ```bash
+  curl -X POST http://localhost:8080/stop
+  ```
+
+- **Получение текущей конфигурации**:
+  ```bash
+  curl -X GET http://localhost:8080/config
+  ```
+
+- **Обновление конфигурации**:
+  ```bash
+  curl -X POST -H "Content-Type: application/json" -d '{"brokers":["localhost:9092"],"group_id":"my-group","topic":"test-topic","min_bytes":10000,"max_bytes":10000000,"message_limit":10,"post_url":"http://localhost:8080/api/messages","port":8080}' http://localhost:8080/config/update
+  ```
+
+---
+
+## Логирование
+
+Приложение использует кастомный логгер, определенный в `pkg/logger/logger.go`, для логирования сообщений на разных уровнях (Info, Error, Debug). Убедитесь, что логирование настроено корректно.
+
+---
+
+## Вклад в проект
+
+Мы приветствуем ваши предложения и улучшения! Вы можете отправить pull request или открыть issue для исправления ошибок или добавления новых функций.
+
+---
+
+## Лицензия
+
+Этот проект распространяется под лицензией MIT. Подробнее см. в файле `LICENSE`.
