@@ -1,6 +1,6 @@
 module kafka-to-api-service
 
-go 1.18
+go 1.20
 
 require (
 	github.com/gin-gonic/gin v1.10.0

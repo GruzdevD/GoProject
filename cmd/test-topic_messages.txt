@@ -1,0 +1,32 @@
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 879789,
+  "object": {
+    "a": "b",
+    "c": "d"
+  },
+  "string": "45667 World"
+}
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 123,
+  "object": {
+    "a": "b",
+    "c": "dекуе"
+  },
+  "string": "вапвапварпшвапрвао пыр пыр"
+}

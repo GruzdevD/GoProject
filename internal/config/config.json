@@ -1,7 +1,1 @@
-{
-    "brokers": ["localhost:9092"],
-    "group_id": "my-group",
-    "topic": "test-topic",
-    "min_bytes": 10000,
-    "max_bytes": 10000000
-  }
+{"brokers":["localhost:9092"],"group_id":"my-group2","topic":"test-topic","min_bytes":10000,"max_bytes":10000000,"message_limit":10,"post_url":"http://localhost:8080/api/messages"}

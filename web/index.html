@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka Consumer Management</title>
+</head>
+<body>
+    <h1>Kafka Consumer Management</h1>
+    <div>
+        <button onclick="startConsumer()">Start Consumer</button>
+        <button onclick="stopConsumer()">Stop Consumer</button>
+    </div>
+    <div>
+        <h2>Configuration</h2>
+        <form id="configForm">
+            <textarea id="config" rows="10" cols="50"></textarea><br>
+            <button type="button" onclick="updateConfig()">Update Config</button>
+        </form>
+    </div>
+    <script>
+        async function startConsumer() {
+            const response = await fetch('/start', { method: 'POST' });
+            alert(await response.text());
+        }
+
+        async function stopConsumer() {
+            const response = await fetch('/stop', { method: 'POST' });
+            alert(await response.text());
+        }
+
+        async function updateConfig() {
+            const config = document.getElementById('config').value;
+            const response = await fetch('/config/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: config
+            });
+            alert(await response.text());
+        }
+
+        async function loadConfig() {
+            const response = await fetch('/config');
+            const config = await response.json();
+            document.getElementById('config').value = JSON.stringify(config, null, 2);
+        }
+
+        // Load the configuration when the page loads
+        window.onload = loadConfig;
+    </script>
+</body>
+</html>
