@@ -6,6 +6,7 @@
 
 ## Структура проекта
 
+
 ```
 kafka-to-api-service
 ├── cmd
