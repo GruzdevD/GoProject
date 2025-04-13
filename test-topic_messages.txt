@@ -78,3 +78,357 @@
   },
   "string": "45667 пиу пиу"
 }
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 123,
+  "object": {
+    "a": "b",
+    "c": "d"
+  },
+  "string": "Hello World"
+}
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 123,
+  "object": {
+    "a": "b",
+    "c": "d"
+  },
+  "string": "вапвапварпшвапрвао World"
+}
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 879789,
+  "object": {
+    "a": "b",
+    "c": "d"
+  },
+  "string": "45667 World"
+}
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 123,
+  "object": {
+    "a": "b",
+    "c": "dекуе"
+  },
+  "string": "вапвапварпшвапрвао пыр пыр"
+}
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+  "number": 879789,
+  "object": {
+    "a": "b",
+    "c": "d"
+  },
+  "string": "45667 пиу пиу"
+}
+{
+  "name": "simple",
+  "value": 42
+}
+{
+  "version": "1.0",
+  "timestamp": "2025-04-13T22:20:01.123Z",
+  "application": {
+    "name": "DataProcessingPipeline",
+    "environment": "production",
+    "status": "running",
+    "metrics": {
+      "cpuUsage": 0.78,
+      "memoryUsage": 0.65,
+      "networkTraffic": {
+        "inbound": 12500,
+        "outbound": 9800,
+        "unit": "bytes/second"
+      },
+      "activeThreads": 15
+    },
+    "config": {
+      "inputTopic": "sensor-data",
+      "outputTopic": "processed-data",
+      "batchSize": 1000,
+      "processingInterval": 5000,
+      "retriesEnabled": true,
+      "maxRetries": 3
+    }
+  },
+  "dataSources": [
+    {
+      "type": "kafka",
+      "name": "SensorDataStream",
+      "connectionDetails": {
+        "brokers": ["kafka-broker-1:9092", "kafka-broker-2:9092", "kafka-broker-3:9092"],
+        "topic": "sensor-data",
+        "groupId": "pipeline-group-1",
+        "authentication": {
+          "type": "PLAIN",
+          "username": "data-user",
+          "password": "secure-password"
+        },
+        "consumerLag": {
+          "partition-0": 12,
+          "partition-1": 5,
+          "partition-2": 0
+        }
+      },
+      "schema": {
+        "type": "json",
+        "fields": [
+          {"name": "sensorId", "dataType": "string", "required": true},
+          {"name": "timestamp", "dataType": "long", "required": true},
+          {"name": "value", "dataType": "float", "required": true},
+          {"name": "location", "dataType": "object", "fields": [
+            {"name": "latitude", "dataType": "float"},
+            {"name": "longitude", "dataType": "float"}
+          ]}
+        ]
+      }
+    },
+    {
+      "type": "database",
+      "name": "ReferenceDataStore",
+      "connectionDetails": {
+        "host": "db-server.example.com",
+        "port": 5432,
+        "database": "reference_db",
+        "user": "read-only-user",
+        "sslEnabled": true
+      },
+      "query": "SELECT * FROM lookup_table WHERE last_updated > :timestamp"
+    }
+  ],
+  "processedDataSummary": {
+    "totalRecordsProcessed": 154823,
+    "recordsProcessedInLastHour": 5678,
+    "averageProcessingTime": 25.6,
+    "unit": "milliseconds/record",
+    "dataQualityChecks": {
+      "nullValueCount": 120,
+      "outOfRangeValueCount": 35,
+      "duplicateRecordCount": 10
+    }
+  },
+  "alerts": [
+    {
+      "id": "alert-001",
+      "severity": "warning",
+      "message": "High CPU usage detected on application server.",
+      "timestamp": "2025-04-13T22:15:30Z",
+      "details": {
+        "threshold": 0.85,
+        "currentValue": 0.78
+      },
+      "isResolved": false
+    },
+    {
+      "id": "alert-002",
+      "severity": "critical",
+      "message": "Consumer lag exceeding threshold on topic 'sensor-data', partition 0.",
+      "timestamp": "2025-04-13T22:18:45Z",
+      "details": {
+        "topic": "sensor-data",
+        "partition": 0,
+        "threshold": 10,
+        "currentLag": 12
+      },
+      "isResolved": false
+    }
+  ],
+  "userPreferences": {
+    "theme": "dark",
+    "notificationsEnabled": true,
+    "dashboardLayout": {
+      "widgets": [
+        {"name": "cpuChart", "position": [0, 0], "size": [2, 1]},
+        {"name": "memoryGauge", "position": [2, 0], "size": [1, 1]},
+        {"name": "kafkaLagTable", "position": [0, 1], "size": [3, 2]}
+      ]
+    },
+    "timeZone": "Europe/Amsterdam"
+  },
+  "relatedEntities": {
+    "users": [
+      {"userId": "user123", "role": "administrator"},
+      {"userId": "user456", "role": "viewer"}
+    ],
+    "teams": [
+      {"teamId": "team-alpha", "members": ["user123"]},
+      {"teamId": "team-beta", "members": ["user456"]}
+    ]
+  }
+}
+{
+  "name": "simple",
+  "value": 42
+}
+{
+  "version": "1.0",
+  "timestamp": "2025-04-13T22:20:01.123Z",
+  "application": {
+    "name": "DataProcessingPipeline",
+    "environment": "production",
+    "status": "running",
+    "metrics": {
+      "cpuUsage": 0.78,
+      "memoryUsage": 0.65,
+      "networkTraffic": {
+        "inbound": 12500,
+        "outbound": 9800,
+        "unit": "bytes/second"
+      },
+      "activeThreads": 15
+    },
+    "config": {
+      "inputTopic": "sensor-data",
+      "outputTopic": "processed-data",
+      "batchSize": 1000,
+      "processingInterval": 5000,
+      "retriesEnabled": true,
+      "maxRetries": 3
+    }
+  },
+  "dataSources": [
+    {
+      "type": "kafka",
+      "name": "SensorDataStream",
+      "connectionDetails": {
+        "brokers": ["kafka-broker-1:9092", "kafka-broker-2:9092", "kafka-broker-3:9092"],
+        "topic": "sensor-data",
+        "groupId": "pipeline-group-1",
+        "authentication": {
+          "type": "PLAIN",
+          "username": "data-user",
+          "password": "secure-password"
+        },
+        "consumerLag": {
+          "partition-0": 12,
+          "partition-1": 5,
+          "partition-2": 0
+        }
+      },
+      "schema": {
+        "type": "json",
+        "fields": [
+          {"name": "sensorId", "dataType": "string", "required": true},
+          {"name": "timestamp", "dataType": "long", "required": true},
+          {"name": "value", "dataType": "float", "required": true},
+          {"name": "location", "dataType": "object", "fields": [
+            {"name": "latitude", "dataType": "float"},
+            {"name": "longitude", "dataType": "float"}
+          ]}
+        ]
+      }
+    },
+    {
+      "type": "database",
+      "name": "ReferenceDataStore",
+      "connectionDetails": {
+        "host": "db-server.example.com",
+        "port": 5432,
+        "database": "reference_db",
+        "user": "read-only-user",
+        "sslEnabled": true
+      },
+      "query": "SELECT * FROM lookup_table WHERE last_updated > :timestamp"
+    }
+  ],
+  "processedDataSummary": {
+    "totalRecordsProcessed": 154823,
+    "recordsProcessedInLastHour": 5678,
+    "averageProcessingTime": 25.6,
+    "unit": "milliseconds/record",
+    "dataQualityChecks": {
+      "nullValueCount": 120,
+      "outOfRangeValueCount": 35,
+      "duplicateRecordCount": 10
+    }
+  },
+  "alerts": [
+    {
+      "id": "alert-001",
+      "severity": "warning",
+      "message": "High CPU usage detected on application server.",
+      "timestamp": "2025-04-13T22:15:30Z",
+      "details": {
+        "threshold": 0.85,
+        "currentValue": 0.78
+      },
+      "isResolved": false
+    },
+    {
+      "id": "alert-002",
+      "severity": "critical",
+      "message": "Consumer lag exceeding threshold on topic 'sensor-data', partition 0.",
+      "timestamp": "2025-04-13T22:18:45Z",
+      "details": {
+        "topic": "sensor-data",
+        "partition": 0,
+        "threshold": 10,
+        "currentLag": 12
+      },
+      "isResolved": false
+    }
+  ],
+  "userPreferences": {
+    "theme": "dark",
+    "notificationsEnabled": true,
+    "dashboardLayout": {
+      "widgets": [
+        {"name": "cpuChart", "position": [0, 0], "size": [2, 1]},
+        {"name": "memoryGauge", "position": [2, 0], "size": [1, 1]},
+        {"name": "kafkaLagTable", "position": [0, 1], "size": [3, 2]}
+      ]
+    },
+    "timeZone": "Europe/Amsterdam"
+  },
+  "relatedEntities": {
+    "users": [
+      {"userId": "user123", "role": "administrator"},
+      {"userId": "user456", "role": "viewer"}
+    ],
+    "teams": [
+      {"teamId": "team-alpha", "members": ["user123"]},
+      {"teamId": "team-beta", "members": ["user456"]}
+    ]
+  }
+}
+{
+  "name": "simple",
+  "value": 42
+}
