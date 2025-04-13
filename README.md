@@ -116,7 +116,7 @@ go run cmd/main.go
 
 Вот как выглядит веб-интерфейс приложения:
 
-![Kafka Consumer Dashboard](web/screenshots/dashboard.png)
+![Kafka Consumer Dashboard](web/screenshots/dashboard.PNG)
 
 ---
 
