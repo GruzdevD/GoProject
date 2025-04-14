@@ -22,10 +22,12 @@ kafka-to-api-service
 │   └── logger
 │       └── logger.go     # Реализация логгера
 ├── web
+│   ├── screenshots
+│   │   └── dashboard.png
 │   ├── index.html       # Веб-интерфейс для управления приложением
 │   ├── script.js        # Логика фронтенда
 │   ├── styles.css       # Стили для веб-интерфейса
-│   ├── icons            # SVG-иконки для интерфейса
+│   └── icons            # SVG-иконки для интерфейса
 │   └── site.webmanifest # Манифест для PWA
 ├── go.mod                # Файл модулей Go
 ├── go.sum                # Контрольные суммы модулей Go
@@ -107,6 +109,14 @@ go run cmd/main.go
 
 4. **Темная тема**:
    - Переключение между светлой и темной темой интерфейса.
+
+---
+
+## Скриншот приложения
+
+Вот как выглядит веб-интерфейс приложения:
+
+![Kafka Consumer Dashboard](web/screenshots/dashboard.PNG)
 
 ---
 
